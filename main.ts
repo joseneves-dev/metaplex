@@ -12,20 +12,9 @@ export function loadWalletKey(keypairFile:string): web3.Keypair {
 
 const INITIALIZE = false;
 
-/*
-const dataV2 = {
-        name: "Xcoin",
-        symbol: "XCON",
-        uri: 'https://shdw-drive.genesysgo.net/79fxjFTq5YHWnUgw3rwD6AfqgfSTYkWWP5tqxs6dicLK/uri.json',
-        sellerFeeBasisPoints: 0,
-        creators: null,
-        collection: null,
-        uses: null
-    }
-*/
 async function main(){
-    console.log("let's name some tokens!");
-    const myKeypair = loadWalletKey("2kFzneMvLp3cohYhpBDjCMVnyKrHqbdQS1kYxpoGSRp5.json");
+    console.log("Let's name some tokens!");
+    const myKeypair = loadWalletKey("keypair.json");
     const mint = new web3.PublicKey("9tH9AkVg7FaTNPTzLsonCi7RLcUF5MPYErcwRf1a77A4");
     const seed1 = Buffer.from(anchor.utils.bytes.utf8.encode("metadata"));
     const seed2 = Buffer.from(mpl.PROGRAM_ID.toBytes());
@@ -73,7 +62,6 @@ async function main(){
     const connection = new web3.Connection("https://api.mainnet-beta.solana.com");
     const txid = await web3.sendAndConfirmTransaction(connection, tx, [myKeypair]);
     console.log(txid);
-
 }
 
 main();
